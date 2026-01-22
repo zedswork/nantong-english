@@ -21,8 +21,13 @@ function Register() {
       return;
     }
 
-    if (password.length < 6) {
-      setLocalError('密码至少需要6个字符');
+    if (password.length < 8) {
+      setLocalError('密码至少需要8个字符');
+      return;
+    }
+
+    if (!/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
+      setLocalError('密码必须包含大写字母、小写字母和数字');
       return;
     }
 
@@ -79,8 +84,8 @@ function Register() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="至少6个字符"
-                minLength={6}
+                placeholder="至少8个字符，含大小写和数字"
+                minLength={8}
               />
             </div>
 
