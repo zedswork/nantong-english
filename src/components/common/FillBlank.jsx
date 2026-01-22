@@ -84,13 +84,23 @@ function FillBlank({
     }
   };
 
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+    
+    // Reset status when input is cleared
+    if (!newValue.trim() && status) {
+      setStatus('');
+    }
+  };
+
   return (
     <input
       ref={inputRef}
       type="text"
       className={`fill-blank ${status}`}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={handleChange}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
       placeholder={placeholder}
