@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Single Page App GitHub Pages redirect
+      // Converts the path to a query string so index.html can restore it
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+      
+      // Redirect to index.html with path as query param
+      window.location.replace(
+        window.location.origin + 
+        '/nantong-english/?p=' + 
+        encodeURIComponent(path.replace('/nantong-english', '') + search + hash)
+      );
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

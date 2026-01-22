@@ -10,6 +10,19 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get('p');
+        if (path) {
+          // Remove the ?p= param and restore the original path
+          window.history.replaceState(null, '', 
+            window.location.pathname.replace(/\/$/, '') + path
+          );
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
