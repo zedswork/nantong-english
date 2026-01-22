@@ -5,14 +5,8 @@
 const isDevelopment = import.meta.env.DEV;
 
 // Digital Ocean API Server
-// SECURITY: Use HTTPS in production! Set up a reverse proxy (nginx/caddy)
-// Example with domain: 'https://api.yourdomain.com'
+// Note: Using HTTP because HTTPS requires a domain (blocked in China)
 const PRODUCTION_API_URL = 'http://159.65.155.75:3001';
-
-// Warn if using HTTP in production (except localhost)
-if (!isDevelopment && PRODUCTION_API_URL.startsWith('http://') && !PRODUCTION_API_URL.includes('localhost')) {
-  console.warn('⚠️ SECURITY WARNING: Using HTTP for API in production. Use HTTPS!');
-}
 
 export const API_BASE_URL = isDevelopment ? '' : PRODUCTION_API_URL;
 
